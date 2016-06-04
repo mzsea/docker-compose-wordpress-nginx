@@ -1,0 +1,1 @@
+copy already extracted wordpress src code to here, then detele this file.

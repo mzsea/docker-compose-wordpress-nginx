@@ -1,0 +1,34 @@
+version: "2"
+services:
+  nginx:
+    image: nginx:1.10.0
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    links:
+      - wordpress:php
+
+  wordpress:
+    build: ./wordpress-build
+    image: mzsea/wordpress-cn:4.5.2
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./php/log:/var/log/php
+    environment:
+      - WORDPRESS_DB_PASSWORD=your_password
+    links:
+      - mysql:mysql
+
+  mysql:
+    image: mysql:5.7.12
+    expose:
+      - "3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_password
