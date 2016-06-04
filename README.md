@@ -42,6 +42,7 @@ $ docker-compose up -d
 When started, if use *docker-wordpress-3*, do next:
 
 1. Create database for wordpress:
+
     ```bash
     $ docker exec -it <mysql_container_name> bash
     root@e50ef7ccca8f:/# mysql -u root -p
@@ -50,7 +51,9 @@ When started, if use *docker-wordpress-3*, do next:
     mysql> eixt;
     root@e50ef7ccca8f:/# eixt
     ```
+
 2. Change permissions of wordpress source files:
+
     ```bash
     $ docker exec -it <php_container_name> bash
     root@867b00000e95:/var/www/html# cd ..
