@@ -20,6 +20,8 @@ services:
       - ./wordpress:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./php/log:/var/log/php
+    environment:
+      - WORDPRESS_DB_PASSWORD=your_password
     links:
       - mysql:mysql
 
