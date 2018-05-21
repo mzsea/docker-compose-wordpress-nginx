@@ -9,8 +9,6 @@ services:
       - ./wordpress:/var/www/html
       - ./nginx/log:/var/log/nginx
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    environment:
-      - WORDPRESS_DB_PASSWORD=your_password
     links:
       - wordpress:php
 
